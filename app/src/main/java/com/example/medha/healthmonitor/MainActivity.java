@@ -25,8 +25,12 @@ public class MainActivity extends AppCompatActivity {
         time2=(EditText)this.findViewById(R.id.intervalTime);
 
         // Get the input values.
-        final String time1_str=time1.getText().toString();
-        final String time2_str=time2.getText().toString();
+         String time1_str=time1.getText().toString();
+         String time2_str=time2.getText().toString();
+
+        // Convert the string values into long.
+        final long intervaltime_long=Long.valueOf(time1_str)*1000;
+        final long totaltime_long=Long.valueOf(time2_str)*1000;
 
 
 
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CountDownTimer(10000,2000){
+                new CountDownTimer(totaltime_long,intervaltime_long){
                     @Override
                     public void onTick(long millisUntilFinished){
                         mp.start();
